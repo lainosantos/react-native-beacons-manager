@@ -96,11 +96,11 @@ public class BeaconsAndroidModule extends ReactContextBaseJavaModule implements 
   }
 
   @ReactMethod
-  public void addParser(String parser, Callback resolve, Callback reject) {
+  public void addParser(String parser, String beacon_type, Callback resolve, Callback reject) {
     try {
       Log.d(LOG_TAG, "BeaconsAndroidModule - addParser: " + parser);
       unbindManager();
-      mBeaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(parser));
+      mBeaconManager.getBeaconParsers().add(new BeaconParser(beacon_type).setBeaconLayout(parser));
       bindManager();
       resolve.invoke();
     } catch (Exception e) {
@@ -109,11 +109,11 @@ public class BeaconsAndroidModule extends ReactContextBaseJavaModule implements 
   }
 
   @ReactMethod
-  public void removeParser(String parser, Callback resolve, Callback reject) {
+  public void removeParser(String parser, String beacon_type, Callback resolve, Callback reject) {
     try {
       Log.d(LOG_TAG, "BeaconsAndroidModule - removeParser: " + parser);
       unbindManager();
-      mBeaconManager.getBeaconParsers().remove(new BeaconParser().setBeaconLayout(parser));
+      mBeaconManager.getBeaconParsers().remove(new BeaconParser(beacon_type).setBeaconLayout(parser));
       bindManager();
       resolve.invoke();
     } catch (Exception e) {
