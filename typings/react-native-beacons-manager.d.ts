@@ -55,11 +55,15 @@ declare module 'react-native-beacons-manager' {
       flag: boolean
     ): void;
 
+    requestAuthorization(): void;
+
     detectIBeacons(): void;
 
     detectAltBeacons(): void;
 
     detectEstimotes(): void;
+
+    detectEddystoneEID(): void;
 
     detectEddystoneUID(): void;
 
